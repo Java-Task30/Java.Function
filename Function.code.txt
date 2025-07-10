@@ -1,0 +1,78 @@
+package javacodes;
+
+import java.util.Scanner;
+
+public class Javacodes {
+   
+    public static void performArithmetic(int a, int b) {
+        System.out.println("Arithmetic Operations:");
+        System.out.println("Addition: " + (a + b));
+        System.out.println("Subtraction: " + (a - b));
+        System.out.println("Multiplication: " + (a * b));
+        if (b != 0) {
+            System.out.println("Division: " + ((double) a / b));
+            System.out.println("Modulo: " + (a % b));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+    }
+// Function to swap two numbers using arithmetic operators
+    public static void swapNumbers(int a, int b) {
+        System.out.println("\nSwapping Numbers (using arithmetic operators):");
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+        a = a + b; // a now holds the sum of original a and b
+        b = a - b; // b now holds the original value of a
+        a = a - b; // a now holds the original value of b
+        System.out.println("After swapping: a = " + a + ", b = " + b);
+    }
+
+    // Function to reverse a given number
+    public static int reverseNumber(int num) {
+        int reversedNum = 0;
+        while (num != 0) {
+            int remainder = num % 10;
+            reversedNum = reversedNum * 10 + remainder;
+            num /= 10;
+        }
+        return reversedNum;
+    }
+
+    // Function to check if a number is a palindrome
+    public static boolean isPalindrome(int num) {
+        int originalNum = num;
+        int reversedNum = reverseNumber(num); // Reusing the reverseNumber function
+        return originalNum == reversedNum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Arithmetic operations
+        System.out.print("Enter first number for arithmetic operations: ");
+        int num1 = scanner.nextInt();
+        System.out.print("Enter second number for arithmetic operations: ");
+        int num2 = scanner.nextInt();
+        performArithmetic(num1, num2);
+
+        // Swapping numbers
+        System.out.print("\nEnter first number for swapping: ");
+        int swapNum1 = scanner.nextInt();
+        System.out.print("Enter second number for swapping: ");
+        int swapNum2 = scanner.nextInt();
+        swapNumbers(swapNum1, swapNum2);
+
+        // Reverse and Palindrome check
+        System.out.print("\nEnter a number to reverse and check for palindrome: ");
+        int checkNum = scanner.nextInt();
+        int reversed = reverseNumber(checkNum);
+        System.out.println("Reversed number: " + reversed);
+
+        if (isPalindrome(checkNum)) {
+            System.out.println(checkNum + " is a palindrome.");
+        } else {
+            System.out.println(checkNum + " is not a palindrome.");
+        }
+
+        scanner.close();
+    }
+}
